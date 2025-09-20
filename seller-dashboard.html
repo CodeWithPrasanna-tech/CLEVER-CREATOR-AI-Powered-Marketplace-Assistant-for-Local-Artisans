@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Dashboard - Handcraft Marketplace</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Seller Dashboard</h1>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<h2>Upload Your Craft</h2>
+<form id="productForm">
+  <label>Product Name</label>
+  <input type="text" id="productName" required>
+
+  <label>Craft Type / Category</label>
+  <input type="text" id="category" required>
+
+  <label>Price (₹)</label>
+  <input type="number" id="price" required>
+
+  <label>Image URL</label>
+  <input type="text" id="imageURL" placeholder="Optional">
+
+  <button type="submit">Upload Craft</button>
+</form>
+
+<h2>Your Products</h2>
+<div id="sellerProducts" class="product-grid"></div>
+
+<script src="marketplace.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>

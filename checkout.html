@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #6a1b9a;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      margin-top: 0.3rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #ff5722, #e91e63);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #ff7043, #f06292);
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Create Account</h2>
+    <form id="registerForm">
+      <label for="role">I am a:</label>
+      <select id="role" required>
+        <option value="">-- Select Role --</option>
+        <option value="craftsman">Craftsman (Seller)</option>
+        <option value="buyer">Buyer</option>
+      </select>
+
+      <div id="extraFields"></div>
+
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" required>
+
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <p style="text-align:center; margin-top:1rem;">
+      Already have an account? <a href="login.html">Login</a>
+    </p>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Dynamic form fields
+    const roleSelect = document.getElementById("role");
+    const extraFields = document.getElementById("extraFields");
+
+    roleSelect.addEventListener("change", () => {
+      const role = roleSelect.value;
+      extraFields.innerHTML = ""; // clear old fields
+
+      if (role === "craftsman") {
+        extraFields.innerHTML = `
+          <label for="businessName">Business Name</label>
+          <input type="text" id="businessName" placeholder="Ex: Clay Wonders">
+
+          <label for="craftType">Craft Type</label>
+          <input type="text" id="craftType" placeholder="Ex: Pottery, Weaving">
+
+          <label for="craftProducts">Products to Sell</label>
+          <input type="text" id="craftProducts" placeholder="Ex: Pots, Sarees, Baskets">
+
+          <label for="craftLocation">Location</label>
+          <input type="text" id="craftLocation" placeholder="Ex: Jaipur, India">
+        `;
+      } else if (role === "buyer") {
+        extraFields.innerHTML = `
+          <label for="buyerName">Full Name</label>
+          <input type="text" id="buyerName" placeholder="Ex: Ramesh Kumar">
+
+          <label for="buyerPreference">Craft Preference</label>
+          <input type="text" id="buyerPreference" placeholder="Ex: Sarees, Handbags">
+
+          <label for="buyerLocation">Location</label>
+          <input type="text" id="buyerLocation" placeholder="Ex: Delhi, India">
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
